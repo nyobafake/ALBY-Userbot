@@ -2,15 +2,12 @@
 FROM punyaalby/alby-userbot:buster
 #━━━━━ ALBY-Userbot ━━━━━━
 
-RUN git clone -b ALBY-Userbot https://github.com/PunyaAlby/ALBY-Userbot /root/userbot
-RUN mkdir /root/userbot/.bin
-RUN pip install --upgrade pip setuptools
-WORKDIR /root/userbot
+RUN git clone -b ALBY-Userbot https://github.com/nyobafake/ALBY-Userbot /home/albyuserbot/ \
+    && chmod 777 /home/albyuserbot \
+    && mkdir /home/albyuserbot/bin/
 
-#Install python requirements
-RUN pip3 install -r https://raw.githubusercontent.com/PunyaAlby/ALBY-Userbot/ALBY-Userbot/requirements.txt
+COPY ./sample_config.env ./config.env* /home/albyuserbot/
 
-EXPOSE 80 443
+WORKDIR /home/albyuserbot/
 
-# Finalization
-CMD ["python3", "-m", "userbot"]
+CMD ["bash","start"]
