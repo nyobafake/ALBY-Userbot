@@ -6,7 +6,7 @@ RUN git clone -b ALBY-Userbot https://github.com/nyobafake/ALBY-Userbot /home/al
     && chmod 777 /home/albyuserbot \
     && mkdir /home/albyuserbot/bin/
 
-RUN pip3 install -r https://raw.githubusercontent.com/Randi356/Vegeta-Userbot/Vegeta-Userbot/requirements.txt
+COPY ./sample_config.env ./config.env* /home/albyuserbot/
 
 WORKDIR /home/albyuserbot/
 
